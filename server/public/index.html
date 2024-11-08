@@ -24,22 +24,22 @@
               <input id="firstNumInput" type="number" placeholder="First Number" data-testid="numOne" class="form-control form-control-primary border border-primary border-2">
             </div>
             <div class="col">
-              <button onClick="handleSignSelect(event)" data-selected="false" id="addBtn" class="btn btn-primary fw-bold w-100">+</button>
+              <button id="addBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="add" class="btn btn-primary fw-bold w-100">+</button>
             </div>
             <div class="col">
-              <button onClick="handleSignSelect(event)" data-selected="false" id="subtractBtn" class="btn btn-primary fw-bold w-100">-</button>
+              <button id="subtractBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="subtract" class="btn btn-primary fw-bold w-100">-</button>
             </div>
             <div class="col">
-              <button onClick="handleSignSelect(event)" data-selected="false" id="multiplyBtn" class="btn btn-primary fw-bold w-100">*</button>
+              <button id="multiplyBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="multiply" class="btn btn-primary fw-bold w-100">*</button>
             </div>
             <div class="col">
-              <button onClick="handleSignSelect(event)" data-selected="false" id="divideBtn" class="btn btn-primary fw-bold w-100">/</button>
+              <button id="divideBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="divide" class="btn btn-primary fw-bold w-100">/</button>
             </div>
             <div class="col-3">
               <input id="secondNumInput" type="number" placeholder="Second Number" data-testid="numTwo" class="form-control form-control-primary border border-primary border-2">
             </div>
             <div class="col">
-              <button onClick="handleSignSelect(event)" data-selected="false" id="equalsBtn" type="submit" class="btn btn-primary fw-bold w-100">=</button>
+              <button id="equalsBtn" type="submit" class="btn btn-primary fw-bold w-100">=</button>
             </div>
             <div class="col">
               <button id="clearBtn" class="btn btn-secondary fw-bold w-100">C</button>
