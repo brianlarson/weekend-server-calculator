@@ -24,22 +24,22 @@
               <input id="firstNumInput" type="number" placeholder="First Number" data-testid="numOne" class="form-control form-control-primary border border-primary border-2">
             </div>
             <div class="col">
-              <button id="addBtn" class="btn btn-primary fw-bold w-100">+</button>
+              <button onClick="handleSignSelect(event)" data-selected="false" id="addBtn" class="btn btn-primary fw-bold w-100">+</button>
             </div>
             <div class="col">
-              <button id="subtractBtn" class="btn btn-primary fw-bold w-100">-</button>
+              <button onClick="handleSignSelect(event)" data-selected="false" id="subtractBtn" class="btn btn-primary fw-bold w-100">-</button>
             </div>
             <div class="col">
-              <button id="multiplyBtn" class="btn btn-primary fw-bold w-100">*</button>
+              <button onClick="handleSignSelect(event)" data-selected="false" id="multiplyBtn" class="btn btn-primary fw-bold w-100">*</button>
             </div>
             <div class="col">
-              <button id="divideBtn" class="btn btn-primary fw-bold w-100">/</button>
+              <button onClick="handleSignSelect(event)" data-selected="false" id="divideBtn" class="btn btn-primary fw-bold w-100">/</button>
             </div>
             <div class="col-3">
               <input id="secondNumInput" type="number" placeholder="Second Number" data-testid="numTwo" class="form-control form-control-primary border border-primary border-2">
             </div>
             <div class="col">
-              <button id="equalsBtn" type="submit" class="btn btn-primary fw-bold w-100">=</button>
+              <button onClick="handleSignSelect(event)" data-selected="false" id="equalsBtn" type="submit" class="btn btn-primary fw-bold w-100">=</button>
             </div>
             <div class="col">
               <button id="clearBtn" class="btn btn-secondary fw-bold w-100">C</button>
