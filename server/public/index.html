@@ -21,28 +21,28 @@
         <section class="mt-4">
           <form data-testid="calculator" class="row g-1 g-md-3">
             <div class="col-3">
-              <input type="number" placeholder="First Number" data-testid="numOne" class="form-control form-control-primary border border-primary border-2">
+              <input id="firstNumInput" type="number" placeholder="First Number" data-testid="numOne" class="form-control form-control-primary border border-primary border-2">
             </div>
             <div class="col">
-              <button class="btn btn-primary fw-bold w-100">+</button>
+              <button id="addBtn" class="btn btn-primary fw-bold w-100">+</button>
             </div>
             <div class="col">
-              <button class="btn btn-primary fw-bold w-100">-</button>
+              <button id="subtractBtn" class="btn btn-primary fw-bold w-100">-</button>
             </div>
             <div class="col">
-              <button class="btn btn-primary fw-bold w-100">*</button>
+              <button id="multiplyBtn" class="btn btn-primary fw-bold w-100">*</button>
             </div>
             <div class="col">
-              <button class="btn btn-primary fw-bold w-100">/</button>
+              <button id="divideBtn" class="btn btn-primary fw-bold w-100">/</button>
             </div>
             <div class="col-3">
-              <input type="number" placeholder="Second Number" data-testid="numTwo" class="form-control form-control-primary border border-primary border-2">
+              <input id="secondNumInput" type="number" placeholder="Second Number" data-testid="numTwo" class="form-control form-control-primary border border-primary border-2">
             </div>
             <div class="col">
-              <button class="btn btn-primary fw-bold w-100">=</button>
+              <button id="equalsBtn" type="submit" class="btn btn-primary fw-bold w-100">=</button>
             </div>
             <div class="col">
-              <button class="btn btn-primary fw-bold w-100">C</button>
+              <button id="clearBtn" class="btn btn-secondary fw-bold w-100">C</button>
             </div>
           </form>
         </section>
