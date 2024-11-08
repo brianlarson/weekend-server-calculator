@@ -7,14 +7,43 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = []
+let calculations = [
+  {
+    numOne: 3,
+    numTwo: 5,
+    operator: '+',
+    result: 8
+  },
+  {
+    numOne: 11,
+    numTwo: 7,
+    operator: '-',
+    result: 4
+  }
+];
 
 
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+app.get("/calculations", (req, res) => {
+  console.log("/calculations GET request received…");
+  res.send(calculations);
+});
 
 // POST /calculations
+app.post("/calculations", (req, res) => {
+  console.log("/calculations POST request received…");
+  console.log("req.body", req.body);
+
+  // Created successfully so return a 201 http status code
+  res.sendStatus(201);
+});
+
+
+
+
+
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:

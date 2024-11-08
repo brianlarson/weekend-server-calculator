@@ -32,13 +32,16 @@ function handleSignSelect(event) {
 // Create function to reset sign buttons
 function resetSignButtons() {
   for (const button of signButtons) {
+
     // Get class list as an array of button
     const classList = Array.from(button.classList);
+
     // If any one is selected reset it
     if (classList.includes("btn-success")) {
       button.classList.remove("btn-success");
       button.classList.add("btn-primary");
       button.setAttribute("data-selected", "false");
     }
+
   }
 }
