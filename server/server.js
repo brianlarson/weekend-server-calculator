@@ -27,14 +27,18 @@ let calculations = [
 
 // GET /calculations
 app.get("/calculations", (req, res) => {
-  console.log("/calculations GET request received…");
+  console.log("GET request received…");
+
+  // Return our calculations data set back to the client
   res.send(calculations);
 });
 
 // POST /calculations
 app.post("/calculations", (req, res) => {
-  console.log("/calculations POST request received…");
-  console.log("req.body", req.body);
+  console.log("POST request received…");
+
+  // Log the request to the server console
+  console.log("req.body:", req.body);
 
   // Created successfully so return a 201 http status code
   res.sendStatus(201);
