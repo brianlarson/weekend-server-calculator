@@ -2,30 +2,66 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Server-Side Calculator</title>    
+    <title>Server-Side Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
     <script defer src="scripts/axios.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1>Server-Side Calculator</h1>
-
-    <form data-testid="calculator">
-      <input data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
-      <input data-testid="numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
-    </form>
-
-    <section data-testid="recentResult">
-      <!-- The most recent calculation result goes here. -->
-    </section>
-
-    <section data-testid="resultHistory">
-      <!-- The list of calculation results goes here. -->
-    </section>
+    <div class="container p-4">
+      <header class="mt-3">
+        <h1 class="fw-semibold">Server-Side Calculator</h1>
+        <hr>
+      </header>
+      <main class="mt-5">
+        <section class="mt-4">
+          <form data-testid="calculator" class="row g-1 g-md-3">
+            <div class="col-3">
+              <input type="number" placeholder="First Number" data-testid="numOne" class="form-control form-control-primary border border-primary border-2">
+            </div>
+            <div class="col">
+              <button class="btn btn-primary fw-bold w-100">+</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary fw-bold w-100">-</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary fw-bold w-100">*</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary fw-bold w-100">/</button>
+            </div>
+            <div class="col-3">
+              <input type="number" placeholder="Second Number" data-testid="numTwo" class="form-control form-control-primary border border-primary border-2">
+            </div>
+            <div class="col">
+              <button class="btn btn-primary fw-bold w-100">=</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary fw-bold w-100">C</button>
+            </div>
+          </form>
+        </section>
+        <section data-testid="recentResult" class="my-5">
+          <!-- The most recent calculation result goes here. -->
+          <h2 class="h4 fw-semibold">Calculation</h2>
+          <ul class="list-group mt-3">
+            <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">21</li>
+          </ul>
+        </section>
+        <section data-testid="resultHistory">
+          <!-- The list of calculation results goes here. -->
+          <h2 class="h4 fw-semibold">Calculation History</h2>
+          <ul class="list-group mt-3">
+            <li class="list-group-item list-group-item-light">2 + 2 = 4</li>
+            <li class="list-group-item list-group-item-light">10 * 12 = 120</li>
+          </ul>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

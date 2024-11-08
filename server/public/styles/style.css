@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+form {
+  font-family: monospace;
+}
+form input {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  max-width: 60rem;
+}
+.list-group {
+  font-family: monospace;
+  font-weight: bold;
+}
