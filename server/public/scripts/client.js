@@ -24,7 +24,7 @@ function handleSignSelect(event) {
 
   // After resetting all buttons we select the new one
   button.classList.remove("btn-primary");
-  button.classList.add("btn-success");
+  button.classList.add("btn-warning");
   button.setAttribute("data-selected", "true");
 
 }
@@ -37,8 +37,8 @@ function resetSignButtons() {
     const classList = Array.from(button.classList);
 
     // If any one is selected reset it
-    if (classList.includes("btn-success")) {
-      button.classList.remove("btn-success");
+    if (classList.includes("btn-warning")) {
+      button.classList.remove("btn-warning");
       button.classList.add("btn-primary");
       button.setAttribute("data-selected", "false");
     }

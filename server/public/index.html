@@ -12,56 +12,80 @@
     <script defer src="scripts/client.js" charset="utf-8"></script>
   </head>
   <body>
-    <div class="container p-4">
-      <header class="mt-3">
-        <h1 class="fw-semibold">Server-Side Calculator</h1>
-        <hr>
-      </header>
-      <main class="mt-5">
-        <section class="mt-4">
-          <form data-testid="calculator" class="row g-1 g-md-3">
-            <div class="col-3">
-              <input id="firstNumInput" type="number" placeholder="First Number" data-testid="numOne" class="form-control form-control-primary border border-primary border-2">
-            </div>
-            <div class="col">
-              <button id="addBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="add" class="btn btn-primary fw-bold w-100">+</button>
-            </div>
-            <div class="col">
-              <button id="subtractBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="subtract" class="btn btn-primary fw-bold w-100">-</button>
-            </div>
-            <div class="col">
-              <button id="multiplyBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="multiply" class="btn btn-primary fw-bold w-100">*</button>
-            </div>
-            <div class="col">
-              <button id="divideBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="divide" class="btn btn-primary fw-bold w-100">/</button>
-            </div>
-            <div class="col-3">
-              <input id="secondNumInput" type="number" placeholder="Second Number" data-testid="numTwo" class="form-control form-control-primary border border-primary border-2">
-            </div>
-            <div class="col">
-              <button id="equalsBtn" type="submit" class="btn btn-primary fw-bold w-100">=</button>
-            </div>
-            <div class="col">
-              <button id="clearBtn" class="btn btn-secondary fw-bold w-100">C</button>
-            </div>
-          </form>
-        </section>
-        <section data-testid="recentResult" class="my-5">
-          <!-- The most recent calculation result goes here. -->
-          <h2 class="h4 fw-semibold">Calculation</h2>
-          <ul class="list-group mt-3">
-            <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">21</li>
-          </ul>
-        </section>
-        <section data-testid="resultHistory">
-          <!-- The list of calculation results goes here. -->
-          <h2 class="h4 fw-semibold">Calculation History</h2>
-          <ul class="list-group mt-3">
-            <li class="list-group-item list-group-item-light">2 + 2 = 4</li>
-            <li class="list-group-item list-group-item-light">10 * 12 = 120</li>
-          </ul>
-        </section>
-      </main>
+    <div class="container p-4 d-flex flex-column justify-content-center vh-100">
+      <div>
+        <header class="mt-3">
+          <h1 class="fw-semibold">
+            <span>🧮</span> Server-Side Calculator
+          </h1>
+          <hr>
+        </header>
+        <main class="mt-5">
+          <section class="mt-4">
+            <form data-testid="calculator" class="row g-1 g-md-3">
+              <div class="col-3">
+                <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">First Number</span>
+                  <input id="firstNumInput" type="number" data-testid="numOne" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
+                </label>
+              </div>
+              <div class="col d-flex align-items-end">
+                <button id="addBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="add" class="btn btn-primary fw-bold w-100">
+                  +
+                </button>
+              </div>
+              <div class="col d-flex align-items-end">
+                <button id="subtractBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="subtract" class="btn btn-primary fw-bold w-100">
+                  -
+                </button>
+              </div>
+              <div class="col d-flex align-items-end">
+                <button id="multiplyBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="multiply" class="btn btn-primary fw-bold w-100">
+                  *
+                </button>
+              </div>
+              <div class="col d-flex align-items-end">
+                <button id="divideBtn" onClick="handleSignSelect(event)" data-selected="false" data-value="divide" class="btn btn-primary fw-bold w-100">
+                  /
+                </button>
+              </div>
+              <div class="col-3">
+                <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">Second Number</span>
+                  <input id="secondNumInput" type="number" data-testid="numTwo" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
+                </label>
+              </div>
+              <div class="col d-flex align-items-end">
+                <button id="equalsBtn" type="submit" class="btn btn-success fw-bold w-100">
+                  =
+                </button>
+              </div>
+              <div class="col d-flex align-items-end">
+                <button id="clearBtn" class="btn btn-secondary fw-bold w-100">
+                  C
+                </button>
+              </div>
+            </form>
+          </section>
+          <section data-testid="recentResult" class="my-5">
+            <h2 class="h4 fw-semibold">
+              <span>🔀</span> Calculation
+            </h2>
+            <ul class="list-group mt-3">
+              <!-- The most recent calculation result goes here. -->
+              <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">21</li>
+            </ul>
+          </section>
+          <section data-testid="resultHistory">
+            <h2 class="h4 fw-semibold">
+              <span>📋</span> Calculation History
+            </h2>
+            <ul class="list-group mt-3">
+              <!-- The list of calculation results goes here. -->
+              <li class="list-group-item list-group-item-light">2 + 2 = 4</li>
+              <li class="list-group-item list-group-item-light">10 * 12 = 120</li>
+            </ul>
+          </section>
+        </main>
+      </div>
     </div>
   </body>
 </html>

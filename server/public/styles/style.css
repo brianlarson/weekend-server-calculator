@@ -2,6 +2,10 @@ body {
   background-color: #eee;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
+h1 span,
+h2 span {
+  margin-right: 0.5rem;
+}
 form {
   font-family: monospace;
 }
@@ -12,6 +16,10 @@ form input {
   max-width: 60rem;
 }
 .list-group {
+  color: black;
   font-family: monospace;
   font-weight: bold;
+}
+[data-testid="resultHistory"] .list-group-item {
+  color: #212121;
 }
