@@ -19,6 +19,18 @@ let calculations = [
     numTwo: 7,
     operator: "-",
     result: 4
+  },
+  {
+    numOne: 21,
+    numTwo: 7,
+    operator: "-",
+    result: 14
+  },
+  {
+    numOne: 5,
+    numTwo: 2,
+    operator: "*",
+    result: 10
   }
 ];
 
