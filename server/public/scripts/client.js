@@ -1,9 +1,8 @@
 // Initialize on load
-onReady();
-
 function onReady() {
   getCalculations();
 }
+onReady();
 
 // Get our mathematical sign buttons
 let addBtn = document.getElementById("addBtn");
@@ -54,6 +53,8 @@ function renderHistoryToDom(calculations) {
     `;
   }
 }
+
+// TODO: Create postCalculations() function
 
 // Create function to handle selecting singular sign buttons
 // so the group behaves like a radio button group in a form

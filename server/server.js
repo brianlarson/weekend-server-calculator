@@ -51,6 +51,8 @@ app.post("/calculations", (req, res) => {
   // Log the request to the server console
   console.log("req.body:", req.body);
 
+  // TODO: Update calculations array appropriately with incoming data
+
   // Created successfully so return a 201 http status code
   res.sendStatus(201);
 });
