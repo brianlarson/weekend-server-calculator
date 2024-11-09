@@ -34,6 +34,9 @@ let calculations = [
   }
 ];
 
+// Log latest calculations data
+console.log("Calculations is currently:", calculations);
+
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
@@ -51,7 +54,10 @@ app.post("/calculations", (req, res) => {
   // Log the request to the server console
   console.log("req.body:", req.body);
 
-  // TODO: Update calculations array appropriately with incoming data
+  // Add new incoming calculation to beginning of our data array
+  // and log to server console
+  const newCalculationReceived = req.body;
+  calculations.unshift(req.body);
 
   // Created successfully so return a 201 http status code
   res.sendStatus(201);

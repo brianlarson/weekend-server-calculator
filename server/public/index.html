@@ -25,36 +25,36 @@
             <form data-testid="calculator" class="row g-1 g-md-3">
               <div class="col-3">
                 <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">First Number</span>
-                  <input id="firstNumInput" type="number" data-testid="numOne" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
+                  <input value="21" id="firstNumInput" type="number" data-testid="numOne" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
                 </label>
               </div>
               <div class="col d-flex align-items-end">
-                <button id="addBtn" onClick="signSelect(event)" data-selected="false" data-value="add" class="btn btn-primary fw-bold w-100">
+                <button id="addBtn" onClick="signSelect(event)" data-selected="false" data-value="+" class="btn btn-primary fw-bold w-100">
                   +
                 </button>
               </div>
               <div class="col d-flex align-items-end">
-                <button id="subtractBtn" onClick="signSelect(event)" data-selected="false" data-value="subtract" class="btn btn-primary fw-bold w-100">
+                <button id="subtractBtn" onClick="signSelect(event)" data-selected="false" data-value="-" class="btn btn-primary fw-bold w-100">
                   -
                 </button>
               </div>
               <div class="col d-flex align-items-end">
-                <button id="multiplyBtn" onClick="signSelect(event)" data-selected="false" data-value="multiply" class="btn btn-primary fw-bold w-100">
+                <button id="multiplyBtn" onClick="signSelect(event)" data-selected="false" data-value="*" class="btn btn-primary fw-bold w-100">
                   *
                 </button>
               </div>
               <div class="col d-flex align-items-end">
-                <button id="divideBtn" onClick="signSelect(event)" data-selected="false" data-value="divide" class="btn btn-primary fw-bold w-100">
+                <button id="divideBtn" onClick="signSelect(event)" data-selected="false" data-value="/" class="btn btn-primary fw-bold w-100">
                   /
                 </button>
               </div>
               <div class="col-3">
                 <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">Second Number</span>
-                  <input id="secondNumInput" type="number" data-testid="numTwo" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
+                  <input value="7" id="secondNumInput" type="number" data-testid="numTwo" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
                 </label>
               </div>
               <div class="col d-flex align-items-end">
-                <button id="equalsBtn" type="submit" class="btn btn-success fw-bold w-100">
+                <button id="equalsBtn" onClick="postCalculations(event)" type="submit" class="btn btn-success fw-bold w-100">
                   =
                 </button>
               </div>

@@ -1,8 +1,12 @@
 // Initialize on load
+onReady();
 function onReady() {
   getCalculations();
 }
-onReady();
+
+// Get our number inputs
+const firstNumInput = document.getElementById("firstNumInput");
+const secondNumInput = document.getElementById("secondNumInput");
 
 // Get our mathematical sign buttons
 let addBtn = document.getElementById("addBtn");
@@ -29,13 +33,13 @@ function getCalculations() {
     .then((response) => {
       // Request was successful so append data to our list
       // in the DOM
-      console.log("Calculations data from server:", response.data);
+      console.log("GET successful - calculations data from server:", response.data);
       renderHistoryToDom(response.data);
     })
-    // Error with the request
-    // TODO: send proper status code
     .catch((error) => {
+      // There is an error with the request
       console.log("Error with /calculations GET request:", error);
+      // TODO: send proper status code?
   });
 }
 
@@ -54,7 +58,36 @@ function renderHistoryToDom(calculations) {
   }
 }
 
-// TODO: Create postCalculations() function
+// Create function to send latest calculation to the server
+function postCalculations(event) {
+  console.log("Sending calculations to server...");
+  // Prevent default behavior since it's a button within a form elem
+  event.preventDefault();
+  // Create new calculation obj to send to server
+  const newCalculation = {
+    numOne: firstNumInput.value,
+    numTwo: secondNumInput.value,
+    operator: getCurrentOperator(),
+    result: undefined
+  };
+  console.log("newCalculation:", newCalculation);
+  axios({
+    method: "POST",
+    url: "/calculations",
+    data: newCalculation
+  })
+    .then((response) => {
+      // Request was successful so send new calculation to the server
+      console.log("POST successful - calculations data from server:", response.data);
+      // Get latest calculations data and render to DOM
+      getCalculations();
+    })
+    .catch((error) => {
+      // There is an error with the request
+      console.log("Error with /calculations POST request:", error);
+      // TODO: send proper status code?
+  });
+}
 
 // Create function to handle selecting singular sign buttons
 // so the group behaves like a radio button group in a form
@@ -85,4 +118,24 @@ function resetSignButtons() {
       button.setAttribute("data-selected", "false");
     }
   }
+}
+
+// Create function to retrieve the currently selected operator button value
+function getCurrentOperator() {
+  // Loop through operator buttons and return sign value of the selected one
+  for (const button of signButtons) {
+    // console.log(`button is:`, button);
+    // console.log(`...and [data-selected] is:`, button.getAttribute("data-selected"));
+    // console.log(`...and [data-value] is:`, button.getAttribute("data-value"));
+    const isSelected = button.getAttribute("data-selected") === "true" ? true : false;
+    console.log(`isSelected = `, isSelected);
+    if (isSelected) {
+      const operatorSign = button.getAttribute("data-value");
+      // console.log(`operatorSign is:`, operatorSign);
+      return operatorSign;
+    }
+  }
+  // TODO: Add alert if user forgot to select an operator/sign
+  // Nothing is selected
+  return null;
 }
