@@ -7,32 +7,7 @@ app.use(express.static("server/public"));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = [
-  {
-    numOne: 3,
-    numTwo: 5,
-    operator: "+",
-    result: 8
-  },
-  {
-    numOne: 11,
-    numTwo: 7,
-    operator: "-",
-    result: 4
-  },
-  {
-    numOne: 21,
-    numTwo: 7,
-    operator: "-",
-    result: 14
-  },
-  {
-    numOne: 5,
-    numTwo: 2,
-    operator: "*",
-    result: 10
-  }
-];
+let calculations = [];
 
 // Log latest calculations data
 console.log("Calculations is currently:", calculations);
@@ -42,7 +17,6 @@ console.log("Calculations is currently:", calculations);
 // GET /calculations
 app.get("/calculations", (req, res) => {
   console.log("GET request received…");
-
   // Return our calculations data set back to the client
   res.send(calculations);
 });
@@ -51,16 +25,46 @@ app.get("/calculations", (req, res) => {
 app.post("/calculations", (req, res) => {
   console.log("POST request received…");
 
-  // Log the request to the server console
-  console.log("req.body:", req.body);
+  // Create new obj from request
+  const newCalc = req.body;
 
-  // Add new incoming calculation to beginning of our data array
-  // and log to server console
-  const newCalculationReceived = req.body;
-  calculations.unshift(req.body);
+  // Create result and make incoming number props integers
+  // instead of strings
+  let result;
+  const num1 = Number(newCalc.numOne);
+  const num2 = Number(newCalc.numTwo);
+  const operator = newCalc.operator;
+
+  // Perform calculation and set result accordingly
+  switch (newCalc.operator) {
+    case "+":
+      result = num1 + num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    case "/":
+      result = num1 / num2;
+      break;
+    default:
+      result = NaN;
+  }
+
+  // Add result prop to our newCalc obj
+  newCalc.result = result;
+
+  // Add our new calculation to the beginning of array
+  calculations.unshift(newCalc);
+
+  // Log latest calculations data
+  console.log("Calculations is now:", calculations);
 
   // Created successfully so return a 201 http status code
   res.sendStatus(201);
+
 });
 
 

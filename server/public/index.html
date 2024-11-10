@@ -25,7 +25,7 @@
             <form data-testid="calculator" class="row g-1 g-md-3">
               <div class="col-3">
                 <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">First Number</span>
-                  <input value="21" id="firstNumInput" type="number" data-testid="numOne" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
+                  <input id="firstNumInput" type="number" data-testid="numOne" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
                 </label>
               </div>
               <div class="col d-flex align-items-end">
@@ -50,7 +50,7 @@
               </div>
               <div class="col-3">
                 <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">Second Number</span>
-                  <input value="7" id="secondNumInput" type="number" data-testid="numTwo" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
+                  <input id="secondNumInput" type="number" data-testid="numTwo" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
                 </label>
               </div>
               <div class="col d-flex align-items-end">
@@ -70,8 +70,10 @@
               <span>🔀</span> Calculation
             </h2>
             <ul id="recentResultUl" class="list-group mt-3">
-              <!-- The most recent calculation result goes here. -->
-              <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">21</li>
+              <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
+                <!-- The most recent calculation result goes here. -->
+                &nbsp;
+              </li>
             </ul>
           </section>
           <section data-testid="resultHistory">
@@ -80,8 +82,6 @@
             </h2>
             <ul id="resultHistoryUl" class="list-group mt-3">
               <!-- The list of calculation results goes here. -->
-              <li class="list-group-item list-group-item-light">2 + 2 = 4</li>
-              <li class="list-group-item list-group-item-light">10 * 12 = 120</li>
             </ul>
           </section>
         </main>

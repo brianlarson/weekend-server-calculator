@@ -18,8 +18,8 @@ let divideBtn = document.getElementById("divideBtn");
 let signButtons = [addBtn, subtractBtn, multiplyBtn, divideBtn];
 
 // Get <ul> elements where calculations are displayed on the page
-let recentResultSection = document.getElementById("recentResultUl");
-let resultHistorySection = document.getElementById("resultHistoryUl");
+let recentResultUl = document.getElementById("recentResultUl");
+let resultHistoryUl = document.getElementById("resultHistoryUl");
 
 // Function used to get calculations from the server and
 // render to the DOM
@@ -45,17 +45,28 @@ function getCalculations() {
 
 // Function for rendering output to the DOM
 function renderHistoryToDom(calculations) {
-  console.log("Rendering to DOM...");
-  // First we clear the current list
-  resultHistorySection.innerHTML = "";
+  console.log("Rendering to DOM...", calculations);
+
+  // Clear the current list before rendering or if empty show message
+  if (calculations.length > 0) {
+    resultHistoryUl.innerHTML = "";
+  } else {
+    resultHistoryUl.innerHTML = `
+      <li class="list-group-item list-group-item-light">
+        <i class="text-secondary">No calculations</i>
+      </li>
+    `;
+  }
+
   // Then we loop through calculations and re-render it
   for (const calc of calculations) {
-    resultHistorySection.innerHTML += `
+    resultHistoryUl.innerHTML += `
       <li class="list-group-item list-group-item-light">
         ${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}
       </li>
     `;
   }
+
 }
 
 // Create function to send latest calculation to the server
@@ -67,8 +78,7 @@ function postCalculations(event) {
   const newCalculation = {
     numOne: firstNumInput.value,
     numTwo: secondNumInput.value,
-    operator: getCurrentOperator(),
-    result: undefined
+    operator: getCurrentOperator()
   };
   console.log("newCalculation:", newCalculation);
   axios({
