@@ -32,6 +32,7 @@ recentResultUl.innerHTML = `
 // render to the DOM
 function getCalculations() {
   console.log("Getting calculations...");
+
   // Send HTTP GET request to the server to get the data
   axios({
     method: "GET",
@@ -63,13 +64,15 @@ function getCalculations() {
 // from the server
 function renderResultToDom(calculations) {
   console.log("Rendering latest result to DOM...", calculations[0].result);
+
   // Get latest calc in data (always the last one) and render it formatted with commas
   // * Most recent calc must be last in the array to satisfy tests
   const latestCalc = calculations[calculations.length - 1];
-  const result = new Intl.NumberFormat('en-US').format(latestCalc.result);
+  // ! Use of Intl.NumberFormat() causes test(s) to fail
+  // const result = new Intl.NumberFormat('en-US').format(latestCalc.result);
   recentResultUl.innerHTML = `
     <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
-      ${result}
+      ${latestCalc.result}
     </li>
   `;
 }
@@ -92,9 +95,15 @@ function renderHistoryToDom(calculations) {
   // Then we loop through calculations and re-render it
   for (const calc of calculations) {
     // Format all numbers to have commas if over 999
-    const numOne = new Intl.NumberFormat('en-US').format(calc.numOne);
-    const numTwo = new Intl.NumberFormat('en-US').format(calc.numTwo);
-    const result = new Intl.NumberFormat('en-US').format(calc.result);
+    // const numOne = new Intl.NumberFormat('en-US').format(calc.numOne);
+    // const numTwo = new Intl.NumberFormat('en-US').format(calc.numTwo);
+    // const result = new Intl.NumberFormat('en-US').format(calc.result);
+
+    // ! Use of Intl.NumberFormat() causes test(s) to fail
+    const numOne = calc.numOne;
+    const numTwo = calc.numTwo;
+    const result = calc.result;
+
     // Render to DOM
     resultHistoryUl.innerHTML += `
       <li class="list-group-item list-group-item-light">
@@ -108,8 +117,10 @@ function renderHistoryToDom(calculations) {
 // Create function to send latest calculation to the server
 function postCalculations(event) {
   console.log("Sending calculations to server...");
+
   // Prevent default behavior since it's a button within a form elem
   event.preventDefault();
+
   // Create new calculation obj to send to server
   const newCalculation = {
     numOne: Number(firstNumInput.value),
@@ -117,6 +128,8 @@ function postCalculations(event) {
     operator: getCurrentOperator()
   };
   console.log("newCalculation:", newCalculation);
+
+  // Send HTTP POST request and send new calc to server for processing
   axios({
     method: "POST",
     url: "/calculations",
@@ -125,6 +138,7 @@ function postCalculations(event) {
     .then((response) => {
       // Request was successful so send new calculation to the server
       console.log("POST successful - calculations data from server:", response.data);
+
       // Get latest calculations data and render to DOM
       getCalculations();
     })
@@ -140,16 +154,18 @@ function postCalculations(event) {
 function signSelect(event) {
   // Prevent default behavior of button elem
   event.preventDefault();
+
   // Get button clicked and put its class list in an array
   let button = event.target;
   let buttonClasses = Array.from(button.classList);
+
   // First we reset ALL buttons in case one is already selected
   resetSignButtons();
+
   // After resetting all buttons we select the new one
   button.classList.remove("btn-primary");
   button.classList.add("btn-warning");
   button.setAttribute("data-selected", "true");
-
 }
 
 // Create function to reset sign buttons
@@ -157,6 +173,7 @@ function resetSignButtons() {
   for (const button of signButtons) {
     // Get class list as an array of button
     const classList = Array.from(button.classList);
+
     // If any one is selected reset it
     if (classList.includes("btn-warning")) {
       button.classList.remove("btn-warning");
@@ -170,18 +187,14 @@ function resetSignButtons() {
 function getCurrentOperator() {
   // Loop through operator buttons and return sign value of the selected one
   for (const button of signButtons) {
-    // console.log(`button is:`, button);
-    // console.log(`...and [data-selected] is:`, button.getAttribute("data-selected"));
-    // console.log(`...and [data-value] is:`, button.getAttribute("data-value"));
     const isSelected = button.getAttribute("data-selected") === "true" ? true : false;
-    console.log(`isSelected = `, isSelected);
     if (isSelected) {
       const operatorSign = button.getAttribute("data-value");
-      // console.log(`operatorSign is:`, operatorSign);
       return operatorSign;
     }
   }
-  // TODO: Add alert if user forgot to select an operator/sign
+
   // Nothing is selected
+  // TODO: Add alert if user forgot to select an operator/sign
   return null;
 }
