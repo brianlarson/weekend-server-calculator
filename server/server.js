@@ -12,7 +12,7 @@ let calculations = [];
 // Log latest calculations data
 console.log("Calculations is currently:", calculations);
 
-// GET /calculations
+// GET /calculations route
 app.get("/calculations", (req, res) => {
   console.log("GET request received…");
 
@@ -20,7 +20,7 @@ app.get("/calculations", (req, res) => {
   res.send(calculations);
 });
 
-// POST /calculations
+// POST /calculations route
 app.post("/calculations", (req, res) => {
   console.log("POST request received…");
 
@@ -68,6 +68,8 @@ app.post("/calculations", (req, res) => {
 
 });
 
+// TODO: Create DELETE route to clear all calculations data
+// DELETE /calculations route
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:

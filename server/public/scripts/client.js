@@ -9,17 +9,17 @@ const firstNumInput = document.getElementById("firstNumInput");
 const secondNumInput = document.getElementById("secondNumInput");
 
 // Get our mathematical sign buttons
-let addBtn = document.getElementById("addBtn");
-let subtractBtn = document.getElementById("subtractBtn");
-let multiplyBtn = document.getElementById("multiplyBtn");
-let divideBtn = document.getElementById("divideBtn");
+const addBtn = document.getElementById("addBtn");
+const subtractBtn = document.getElementById("subtractBtn");
+const multiplyBtn = document.getElementById("multiplyBtn");
+const divideBtn = document.getElementById("divideBtn");
 
 // Make an array of the sign buttons
-let signButtons = [addBtn, subtractBtn, multiplyBtn, divideBtn];
+const signButtons = [addBtn, subtractBtn, multiplyBtn, divideBtn];
 
 // Get <ul> elements where calculations are displayed on the page
-let recentResultUl = document.getElementById("recentResult");
-let resultHistoryUl = document.getElementById("resultHistory");
+const recentResultUl = document.getElementById("recentResult");
+const resultHistoryUl = document.getElementById("resultHistory");
 
 // Set result area on first page load
 recentResultUl.innerHTML = `
@@ -27,6 +27,9 @@ recentResultUl.innerHTML = `
     &nbsp;
   </li>
 `;
+
+// Get clear history button wrapper
+const clearHistoryBtnDiv = document.getElementById("clearHistoryBtn");
 
 // Function used to get calculations from the server and
 // render to the DOM
@@ -45,6 +48,9 @@ function getCalculations() {
       if (response.data.length > 0) {
         renderResultToDom(response.data);
         renderHistoryToDom(response.data);
+        clearHistoryBtnDiv.innerHTML = `
+          <button onClick="clearHistory()" class="btn btn-sm btn-outline-danger">Clear History</button>
+        `;
       } else {
         resultHistoryUl.innerHTML = `
           <li class="list-group-item list-group-item-light">
@@ -112,6 +118,14 @@ function renderHistoryToDom(calculations) {
     `;
   }
 
+}
+
+// TODO: Create function to clear history on DOM and remove
+// TODO  all calculations from server
+function clearHistory() {
+  // 1. Reset history list on DOM and re-insert "No calculations" msg
+  // 2. Send a DELETE HTTP request to server - just a signal to wipe
+  //    out the `calculations` array on the server?
 }
 
 // Create function to send latest calculation to the server
