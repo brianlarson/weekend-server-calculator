@@ -63,8 +63,9 @@ function getCalculations() {
 // from the server
 function renderResultToDom(calculations) {
   console.log("Rendering latest result to DOM...", calculations[0].result);
-  // Get latest result in data (always first one) and render it formatted with commas
-  let result = new Intl.NumberFormat('en-US').format(calculations[0].result);
+  // Get latest result in data (always *LAST* one) and render it formatted with commas
+  // ! Satisfy tests
+  let result = new Intl.NumberFormat('en-US').format(calculations[calculations.length - 1].result);
   recentResultUl.innerHTML = `
     <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
       ${result}
@@ -110,8 +111,8 @@ function postCalculations(event) {
   event.preventDefault();
   // Create new calculation obj to send to server
   const newCalculation = {
-    numOne: firstNumInput.value,
-    numTwo: secondNumInput.value,
+    numOne: Number(firstNumInput.value),
+    numTwo: Number(secondNumInput.value),
     operator: getCurrentOperator()
   };
   console.log("newCalculation:", newCalculation);
