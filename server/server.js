@@ -56,8 +56,8 @@ app.post("/calculations", (req, res) => {
   // Add result prop to our newCalc obj
   newCalc.result = result;
 
-  // Add our new calculation to the *END* of array
-  // ! Satisfy tests
+  // Add our new calculation to the end of the array
+  // * Use of unshift() instead of push() makes tests fail
   calculations.push(newCalc);
 
   // Log latest calculations data

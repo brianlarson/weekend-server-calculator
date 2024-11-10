@@ -63,9 +63,10 @@ function getCalculations() {
 // from the server
 function renderResultToDom(calculations) {
   console.log("Rendering latest result to DOM...", calculations[0].result);
-  // Get latest result in data (always *LAST* one) and render it formatted with commas
-  // ! Satisfy tests
-  let result = new Intl.NumberFormat('en-US').format(calculations[calculations.length - 1].result);
+  // Get latest calc in data (always the last one) and render it formatted with commas
+  // * Most recent calc must be last in the array to satisfy tests
+  const latestCalc = calculations[calculations.length - 1];
+  const result = new Intl.NumberFormat('en-US').format(latestCalc.result);
   recentResultUl.innerHTML = `
     <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
       ${result}
