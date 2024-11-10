@@ -121,6 +121,9 @@ function postCalculations(event) {
   // Prevent default behavior since it's a button within a form elem
   event.preventDefault();
 
+  // TODO: Add data validation - make sure all inputs and an operator are selected
+  // TODO  before proceeding, otherwise throw an alert
+
   // Create new calculation obj to send to server
   const newCalculation = {
     numOne: Number(firstNumInput.value),
