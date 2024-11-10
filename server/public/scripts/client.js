@@ -183,8 +183,23 @@ function resetSignButtons() {
   }
 }
 
-// ! Fix test
-// TODO: Clear: Inputs should be empty after the 'C' button is clicked
+// Create function to clear inputs and latest calculation when clear btn is clicked
+function clearCalculation(event) {
+  // Prevent button in form from refreshing page
+  event.preventDefault();
+
+  // Empty number inputs on form and reset operator buttons
+  firstNumInput.value = '';
+  secondNumInput.value = '';
+  resetSignButtons();
+
+  // Reset/clear result area
+  recentResultUl.innerHTML = `
+    <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
+      &nbsp;
+    </li>
+  `;
+}
 
 // Create function to retrieve the currently selected operator button value
 function getCurrentOperator() {
