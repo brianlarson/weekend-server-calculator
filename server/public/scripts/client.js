@@ -18,8 +18,8 @@ let divideBtn = document.getElementById("divideBtn");
 let signButtons = [addBtn, subtractBtn, multiplyBtn, divideBtn];
 
 // Get <ul> elements where calculations are displayed on the page
-let recentResultUl = document.getElementById("recentResultUl");
-let resultHistoryUl = document.getElementById("resultHistoryUl");
+let recentResultUl = document.getElementById("recentResult");
+let resultHistoryUl = document.getElementById("resultHistory");
 
 // Set result area on first page load
 recentResultUl.innerHTML = `
