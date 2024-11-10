@@ -183,6 +183,9 @@ function resetSignButtons() {
   }
 }
 
+// ! Fix test
+// TODO: Clear: Inputs should be empty after the 'C' button is clicked
+
 // Create function to retrieve the currently selected operator button value
 function getCurrentOperator() {
   // Loop through operator buttons and return sign value of the selected one
