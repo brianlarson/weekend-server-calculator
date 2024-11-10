@@ -57,6 +57,7 @@ app.post("/calculations", (req, res) => {
 
   // Add our new calculation to the end of the array
   // * Use of unshift() instead of push() makes tests fail
+  // * History must be chronological
   calculations.push(newCalc);
 
   // Log latest calculations data

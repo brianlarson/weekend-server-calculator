@@ -121,35 +121,54 @@ function postCalculations(event) {
   // Prevent default behavior since it's a button within a form elem
   event.preventDefault();
 
-  // TODO: Add data validation - make sure all inputs and an operator are selected
-  // TODO  before proceeding, otherwise throw an alert
+  // If form is valid proceed - otherwise trigger alert msg
+  if (isFormValid()) {
+    // Create new calculation obj to send to server
+    const newCalculation = {
+      numOne: Number(firstNumInput.value),
+      numTwo: Number(secondNumInput.value),
+      operator: getCurrentOperator()
+    };
+    console.log("newCalculation:", newCalculation);
 
-  // Create new calculation obj to send to server
-  const newCalculation = {
-    numOne: Number(firstNumInput.value),
-    numTwo: Number(secondNumInput.value),
-    operator: getCurrentOperator()
-  };
-  console.log("newCalculation:", newCalculation);
-
-  // Send HTTP POST request and send new calc to server for processing
-  axios({
-    method: "POST",
-    url: "/calculations",
-    data: newCalculation
-  })
-    .then((response) => {
-      // Request was successful so send new calculation to the server
-      console.log("POST successful - calculations data from server:", response.data);
-
-      // Get latest calculations data and render to DOM
-      getCalculations();
+    // Send HTTP POST request and send new calc to server for processing
+    axios({
+      method: "POST",
+      url: "/calculations",
+      data: newCalculation
     })
-    .catch((error) => {
-      // There is an error with the request
-      console.log("Error with /calculations POST request:", error);
-      // TODO: send proper status code?
-  });
+      .then((response) => {
+        // Request was successful so send new calculation to the server
+        console.log("POST successful - calculations data from server:", response.data);
+
+        // Get latest calculations data and render to DOM
+        getCalculations();
+      })
+      .catch((error) => {
+        // There is an error with the request
+        console.log("Error with /calculations POST request:", error);
+        // TODO: send proper status code?
+    });
+  } else {
+    alert("‼️ It looks like you haven't entered two numbers and selected an operator. Please try again.");
+  }
+
+}
+
+// Create function to check if all data in form has been entered
+function isFormValid() {
+  // Check if an operator is selected by looping through button
+  let operatorSelected = false;
+  for (const button of signButtons) {
+    if (button.getAttribute("data-selected") === "true") {
+      operatorSelected = true;
+    }
+  }
+  if (operatorSelected && firstNumInput.value && secondNumInput.value) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 // Create function to handle selecting singular sign buttons
