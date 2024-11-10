@@ -120,12 +120,28 @@ function renderHistoryToDom(calculations) {
 
 }
 
-// TODO: Create function to clear history on DOM and remove
-// TODO  all calculations from server
+// Create function to clear history and remove all calculation
+// data from server
 function clearHistory() {
-  // 1. Reset history list on DOM and re-insert "No calculations" msg
-  // 2. Send a DELETE HTTP request to server - just a signal to wipe
-  //    out the `calculations` array on the server?
+  // Make sure the user wants to clear the entire history
+  const clearHistoryConfirmed = confirm("‼️ Are you sure you want to clear the calculation history? This can not be undone.");
+  if (clearHistoryConfirmed) {
+    // Send a DELETE HTTP request to server - just a signal to wipe
+    axios({
+      method: "DELETE",
+      url: "/calculations"
+    })
+      .then((response) => {
+        console.log("Successfully cleared history?");
+        // Refresh the page to reset the interface
+        location.reload();
+    })
+      .catch((error) => {
+        // There is an error with the request
+        console.log("Error with /calculations DELETE request:", error);
+        // TODO: send proper status code?
+    });
+  }
 }
 
 // Create function to send latest calculation to the server

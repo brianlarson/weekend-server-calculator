@@ -70,7 +70,12 @@ app.post("/calculations", (req, res) => {
 
 // TODO: Create DELETE route to clear all calculations data
 // DELETE /calculations route
-
+app.delete("/calculations", (req, res) => {
+  console.log("DELETE request received…");
+  calculations = [];
+  console.log("calculations is now:", calculations);
+  res.sendStatus(200);
+});
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
