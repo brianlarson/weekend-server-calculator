@@ -21,6 +21,13 @@ let signButtons = [addBtn, subtractBtn, multiplyBtn, divideBtn];
 let recentResultUl = document.getElementById("recentResultUl");
 let resultHistoryUl = document.getElementById("resultHistoryUl");
 
+// Set result area on first page load
+recentResultUl.innerHTML = `
+  <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
+    &nbsp;
+  </li>
+`;
+
 // Function used to get calculations from the server and
 // render to the DOM
 function getCalculations() {
@@ -34,7 +41,16 @@ function getCalculations() {
       // Request was successful so append data to our list
       // in the DOM
       console.log("GET successful - calculations data from server:", response.data);
-      renderHistoryToDom(response.data);
+      if (response.data.length > 0) {
+        renderResultToDom(response.data);
+        renderHistoryToDom(response.data);
+      } else {
+        resultHistoryUl.innerHTML = `
+          <li class="list-group-item list-group-item-light">
+            <i class="text-secondary">No calculations</i>
+          </li>
+        `;
+      }
     })
     .catch((error) => {
       // There is an error with the request
@@ -43,11 +59,24 @@ function getCalculations() {
   });
 }
 
+// Function to show result of latest calculation after it's received
+// from the server
+function renderResultToDom(calculations) {
+  console.log("Rendering latest result to DOM...", calculations[0].result);
+  // Get latest result in data (always first one) and render it formatted with commas
+  let result = new Intl.NumberFormat('en-US').format(calculations[0].result);
+  recentResultUl.innerHTML = `
+    <li class="list-group-item list-group-item-success h3 fw-bold p-3 text-center">
+      ${result}
+    </li>
+  `;
+}
+
 // Function for rendering output to the DOM
 function renderHistoryToDom(calculations) {
-  console.log("Rendering to DOM...", calculations);
+  console.log("Rendering history to DOM...", calculations);
 
-  // Clear the current list before rendering or if empty show message
+  // Clear the current list before rendering or if empty, show message
   if (calculations.length > 0) {
     resultHistoryUl.innerHTML = "";
   } else {
@@ -60,9 +89,14 @@ function renderHistoryToDom(calculations) {
 
   // Then we loop through calculations and re-render it
   for (const calc of calculations) {
+    // Format all numbers to have commas if over 999
+    const numOne = new Intl.NumberFormat('en-US').format(calc.numOne);
+    const numTwo = new Intl.NumberFormat('en-US').format(calc.numTwo);
+    const result = new Intl.NumberFormat('en-US').format(calc.result);
+    // Render to DOM
     resultHistoryUl.innerHTML += `
       <li class="list-group-item list-group-item-light">
-        ${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}
+        ${numOne} ${calc.operator} ${numTwo} = ${result}
       </li>
     `;
   }
