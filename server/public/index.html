@@ -22,7 +22,65 @@
         </header>
         <main class="mt-5">
           <section class="mt-4">
-            <form data-testid="calculator" class="row g-1 g-md-3">
+            <div class="p-3 bg-dark rounded-3 border-bottom border-warning border-5 shadow-sm" style="width: 24rem;">
+              <form data-testid="calculator" class="row g-2">
+                <div class="col-9">
+                  <input id="resultInput" value="21" type="text" class="form-control w-100">
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-danger fw-bold w-100 py-3">C</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">7</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">8</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">9</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-primary fw-bold w-100 py-3">+</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">4</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">5</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">6</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-primary fw-bold w-100 py-3">-</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">1</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">2</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">3</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-primary fw-bold w-100 py-3">*</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">0</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-secondary fw-bold w-100 py-3">.</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-success fw-bold w-100 py-3">=</button>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-primary fw-bold w-100 py-3">/</button>
+                </div>
+              </form>
+            </div>
+            <!-- <form data-testid="calculator" class="row g-1 g-md-3">
               <div class="col-3">
                 <label for="firstNumInput" class="w-100"><span class="fs-6 text-primary">First Number</span>
                   <input id="firstNumInput" type="number" data-testid="numOne" class="form-control form-control-primary fs-6 border border-primary border-2 mt-2">
@@ -63,7 +121,7 @@
                   C
                 </button>
               </div>
-            </form>
+            </form> -->
           </section>
           <section data-testid="recentResult" class="my-5">
             <h2 class="h4 fw-semibold">

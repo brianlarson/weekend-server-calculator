@@ -23,3 +23,11 @@ form input {
 [data-testid="resultHistory"] .list-group-item {
   color: #212121;
 }
+#resultInput {
+  font-size: 28px;
+  font-family: monospace;
+  font-weight: bold;
+  background-color: lightgray;
+  color: darkolivegreen;
+  height: 58px;
+}
